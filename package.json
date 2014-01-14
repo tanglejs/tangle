@@ -1,0 +1,64 @@
+{
+  "name": "tangle",
+  "version": "0.0.0",
+  "description": "Wire up your frontends using Grunt & Marionette",
+  "main": "index.js",
+  "directories": {
+    "man": "man",
+    "doc": "readme"
+  },
+  "bin": {
+    "tangle": "bin/tangle"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "preferGlobal": true,
+  "author": {
+    "name": "Logan Koester",
+    "email": "logan@logankoester.com",
+    "url": "http://logankoester.com"
+  },
+  "dependencies": {
+    "helmsman": "git+https://github.com/beaugunderson/node-helmsman.git",
+    "grunt-cli": "~0.1.10",
+    "bower": "~1.2.7",
+    "yo": "~1.0.4"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-bump": "0.0.11",
+    "grunt-readme-generator": "~0.3.41",
+    "nixt": "0.0.1",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-nodeunit": "~0.2.2",
+    "marked-man": "0.0.2"
+  },
+  "keywords": [
+    "tangle",
+    "tanglejs",
+    "grunt",
+    "yeoman",
+    "backbone",
+    "marionette"
+  ],
+  "homepage": "https://github.com/tanglejs/tangle",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tanglejs/tangle"
+  },
+  "bugs": {
+    "url": "https://github.com/tanglejs/tangle/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/tanglejs/tangle/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  }
+}
