@@ -1,6 +1,6 @@
 # tangle 
 
-[![Strider Build Status](http://ci.ldk.io/tanglejs/tangle/badge)](http://ci.ldk.io/tanglejs/tangle/)
+[![Strider Build Status](https://ci.ldk.io/tanglejs/tangle/badge)](https://ci.ldk.io/tanglejs/tangle/)
 [![Travis Build Status](https://secure.travis-ci.org/tanglejs/tangle.png?branch=master)](http://travis-ci.org/tanglejs/tangle)
 
 > Wire up your frontends using Grunt & Marionette
