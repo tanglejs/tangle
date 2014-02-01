@@ -8,7 +8,7 @@
     "doc": "readme"
   },
   "bin": {
-    "tangle": "bin/tangle"
+    "tangle": "bin/tangle.coffee"
   },
   "scripts": {
     "test": "grunt test"
@@ -20,7 +20,7 @@
     "url": "http://logankoester.com"
   },
   "dependencies": {
-    "helmsman": "git+https://github.com/beaugunderson/node-helmsman.git",
+    "helmsman": "git://github.com/logankoester/node-helmsman#path-and-non-js",
     "tangle-config": "~0.1.0",
     "coffee-script": "~1.7.1"
   },

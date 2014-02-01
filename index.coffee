@@ -1,3 +1,4 @@
+require 'coffee-script/register'
 helmsman = require 'helmsman'
 
 cli = helmsman
