@@ -1,3 +1,4 @@
-#!/usr/bin/env node
-path = require('path');
-require(path.join(__dirname, '..', 'index.js'))
+#!/usr/bin/env coffee
+
+path = require 'path'
+require path.join(__dirname, '..', 'index.coffee')

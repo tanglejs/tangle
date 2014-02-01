@@ -13,30 +13,28 @@ module.exports = (grunt) ->
   # Project configuration.
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
-    # Coffeescript
-    coffee:
-      src:
-        expand: true
-        cwd: 'src/'
-        src: '**/*.coffee'
-        dest: '.'
-        ext: '.js'
 
     clean:
-      lib: ['lib/', 'tests/', 'man/']
+      docs: ['man/']
+      tests: ['tests/tmp/']
 
     watch:
       all:
         files: [
-          'src/**/*.coffee',
-          'bin/**/*.coffee',
-          'Gruntfile.coffee',
+          'bin/**/*'
+          'Gruntfile.coffee'
+          'subcommands/*/templates/**/*'
+          'subcommands/**/*.coffee'
           'readme/**/*.md'
+          'tests/**/*.coffee'
+          '!tests/tmp/**/*'
         ]
         tasks: ['default']
 
-    nodeunit:
-      all: ['tests/**/*_test.js']
+    mochacli:
+      options:
+        compilers: ['coffee:coffee-script/register']
+      all: ['tests/**/*_test.coffee']
 
     readme_generator:
       help:
@@ -75,9 +73,8 @@ module.exports = (grunt) ->
 
   # These plugins provide necessary tasks.
   grunt.loadNpmTasks 'grunt-contrib-clean'
-  grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-watch'
-  grunt.loadNpmTasks 'grunt-contrib-nodeunit'
+  grunt.loadNpmTasks 'grunt-mocha-cli'
   grunt.loadNpmTasks 'grunt-readme-generator'
   grunt.loadNpmTasks 'grunt-bump'
 
@@ -94,6 +91,6 @@ module.exports = (grunt) ->
       grunt.file.write out, result.stdout
       done()
 
-  grunt.registerTask 'build', ['clean', 'coffee', 'readme_generator', 'marked-man']
-  grunt.registerTask 'test', ['nodeunit']
+  grunt.registerTask 'build', ['clean', 'readme_generator', 'marked-man']
+  grunt.registerTask 'test', ['mochacli']
   grunt.registerTask 'default', ['build', 'test']
