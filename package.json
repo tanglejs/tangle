@@ -21,8 +21,14 @@
   },
   "dependencies": {
     "helmsman": "git://github.com/logankoester/node-helmsman#path-and-non-js",
-    "tangle-config": "~0.1.0",
-    "tangle-util": "~0.1.0"
+    "tangle-app": "*",
+    "tangle-config": "*",
+    "tangle-environment": "*",
+    "tangle-initializer": "*",
+    "tangle-module": "*",
+    "tangle-plugin": "*",
+    "tangle-util": "*",
+    "tangle-watch": "*"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
