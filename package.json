@@ -22,6 +22,7 @@
   "dependencies": {
     "helmsman": "git://github.com/logankoester/node-helmsman#path-and-non-js",
     "tangle-config": "~0.1.0",
+    "tangle-util": "~0.1.0",
     "coffee-script": "~1.7.1"
   },
   "devDependencies": {
