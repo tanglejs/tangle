@@ -18,13 +18,9 @@ module.exports = (grunt) ->
     watch:
       all:
         files: [
-          'bin/**/*'
           'Gruntfile.coffee'
-          'subcommands/*/templates/**/*'
-          'subcommands/**/*.coffee'
           'readme/**/*.md'
           'tests/**/*.coffee'
-          '!tests/tmp/**/*'
         ]
         tasks: ['default']
 

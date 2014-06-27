@@ -18,7 +18,6 @@
     "email": "logan@logankoester.com",
     "url": "http://logankoester.com"
   },
-  "license": "MIT",
   "dependencies": {
     "lodash": "^2.4.1",
     "plugin-finder": "^0.1.1",

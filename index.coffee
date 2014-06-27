@@ -8,7 +8,7 @@ ContextManager = require './lib/context_manager'
 
 app = new shell
   prompt: 'tangle>'
-  config: require 'tangle-config'
+  config: require('tangle-config').load()
   logger: require 'winston'
   loader: new PluginLoader
   contextManager: new ContextManager
