@@ -1,3 +1,0 @@
-#!/usr/bin/env coffee
-path = require 'path'
-require path.join(__dirname, '..', 'index.coffee')

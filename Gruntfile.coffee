@@ -6,8 +6,6 @@
 # * Licensed under the MIT license.
 #
 
-path = require 'path'
-
 module.exports = (grunt) ->
   #
   # Project configuration.
@@ -15,7 +13,6 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON 'package.json'
 
     clean:
-      docs: ['man/']
       tests: ['tests/tmp/']
 
     watch:
@@ -78,19 +75,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-readme-generator'
   grunt.loadNpmTasks 'grunt-bump'
 
-  grunt.registerTask 'marked-man', ->
-    done = @async()
-    grunt.util.spawn
-      cmd: './marked-man'
-      args: [path.join(__dirname, 'tangle.md')]
-      opts:
-        cwd: path.join(__dirname, 'node_modules', 'marked-man', 'bin')
-    , (error, result, code) ->
-      throw error if error
-      out = path.join __dirname, 'man', 'tangle.1'
-      grunt.file.write out, result.stdout
-      done()
-
-  grunt.registerTask 'build', ['clean', 'readme_generator', 'marked-man']
+  grunt.registerTask 'build', ['clean', 'readme_generator']
   grunt.registerTask 'test', ['mochacli']
   grunt.registerTask 'default', ['build', 'test']
