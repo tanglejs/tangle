@@ -1,6 +1,7 @@
 _ = require 'lodash'
-finder = require 'plugin-finder'
 Plugin = require './plugin'
+path = require 'path'
+chdir = require 'chdir'
 
 module.exports = class PluginLoader
 
@@ -9,8 +10,10 @@ module.exports = class PluginLoader
   #
   # @param [RegExp] filter Expression matching the names of the modules
   loadAll: (filter) ->
-    @plugins = _.map finder.loadAll(filter), (pluginModule) ->
-      new Plugin pluginModule
+    chdir path.join(__dirname, '..'), =>
+      finder = require 'plugin-finder'
+      @plugins = _.map finder.loadAll(filter), (pluginModule) ->
+        new Plugin pluginModule
   
   # @option options [shell] shell A node-shell instance to mount plugins on
   mount: (shell) ->

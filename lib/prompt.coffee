@@ -3,6 +3,7 @@ _s = require 'underscore.string'
 
 module.exports = (settings) ->
   config = settings.shell.settings.config
+  context = settings.shell.settings.contextManager.current
   styles = settings.shell.styles
   _.templateSettings.interpolate = /{([\s\S]+?)}/g
 
@@ -18,11 +19,12 @@ module.exports = (settings) ->
         styles.raw(env, color: 'green')
 
   getContextName = ->
-    name = config.get 'name'
+    name = context.name
     name = _s.truncate name, 10
     styles.raw name, color: 'magenta'
 
-  getContextType = -> styles.raw('app', color: 'blue')
+  getContextType = ->
+    styles.raw(context.type, color: 'blue')
 
   setPrompt = ->
     prompt = _.template template,

@@ -13,10 +13,10 @@ app = new shell
   config: require('tangle-config').load()
   logger: require 'winston'
   loader: new PluginLoader
-  contextManager: new ContextManager
 
 app.settings.logger.cli()
 app.settings.loader.loadAll /^tangle.*$/
+app.settings.contextManager = new ContextManager shell: app
 
 app.configure ->
   app.use prompt shell: app
@@ -28,7 +28,7 @@ app.configure ->
 
 app.settings.loader.mount app
 
-readlineHack app
+if app.isShell then readlineHack app
 
 # TODO - Fuzzy match on command set (for abbrev support)
 # TODO - Bash/Zsh completions

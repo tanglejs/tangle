@@ -19,6 +19,7 @@
     "url": "http://logankoester.com"
   },
   "dependencies": {
+    "chdir": "0.0.0",
     "lodash": "^2.4.1",
     "plugin-finder": "^0.1.1",
     "shell": "^0.3.2",
