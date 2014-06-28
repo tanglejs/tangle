@@ -3,8 +3,8 @@
 shell = require 'shell'
 path = require 'path'
 
-context = require path.join(__dirname, 'lib', 'context')
 prompt = require path.join(__dirname, 'lib', 'prompt')
+readlineHack = require path.join(__dirname, 'lib', 'readline_hack')
 
 PluginLoader = require './lib/plugin_loader'
 ContextManager = require './lib/context_manager'
@@ -19,14 +19,16 @@ app.settings.logger.cli()
 app.settings.loader.loadAll /^tangle.*$/
 
 app.configure ->
-  app.use prompt shell: app
-  app.use context.router shell: app
+  app.use app.settings.contextManager.rewriteRouter shell: app
   app.use shell.router shell: app
-  app.use context.completer shell: app
+  app.use app.settings.contextManager.rewriteCompleter shell: app
   app.use shell.history shell: app
   app.use shell.help shell: app, introduction: true
+  app.use prompt shell: app
 
 app.settings.loader.mount app
+
+readlineHack app
 
 # TODO - Fuzzy match on command set (for abbrev support)
 # TODO - Bash/Zsh completions

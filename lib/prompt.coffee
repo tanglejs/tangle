@@ -6,7 +6,7 @@ module.exports = (settings) ->
   styles = settings.shell.styles
   _.templateSettings.interpolate = /{([\s\S]+?)}/g
 
-  template = '{context.type}:{context.name} [{environment}]>'
+  template = '{context.type}:{context.name} [{environment}] >'
 
   getEnvironment = ->
     env = config.get 'environment'
@@ -25,11 +25,14 @@ module.exports = (settings) ->
   getContextType = -> styles.raw('app', color: 'blue')
 
   setPrompt = ->
-    settings.shell.settings.prompt = _.template template,
+    prompt = _.template template,
       context:
         name: getContextName()
         type: getContextType()
       environment: getEnvironment()
+    settings.shell.settings.prompt = prompt
+    settings.shell._interface.setPrompt prompt, prompt.length
+    settings.shell.prompt()
 
   setPrompt()
   (req, res, next) ->
