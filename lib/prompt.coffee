@@ -31,8 +31,6 @@ module.exports = (settings) ->
         type: getContextType()
       environment: getEnvironment()
     settings.shell.settings.prompt = prompt
-    settings.shell._interface.setPrompt prompt, prompt.length
-    settings.shell.prompt()
 
   setPrompt()
   (req, res, next) ->

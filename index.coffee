@@ -19,12 +19,12 @@ app.settings.logger.cli()
 app.settings.loader.loadAll /^tangle.*$/
 
 app.configure ->
+  app.use prompt shell: app
   app.use app.settings.contextManager.rewriteRouter shell: app
   app.use shell.router shell: app
   app.use app.settings.contextManager.rewriteCompleter shell: app
   app.use shell.history shell: app
   app.use shell.help shell: app, introduction: true
-  app.use prompt shell: app
 
 app.settings.loader.mount app
 
