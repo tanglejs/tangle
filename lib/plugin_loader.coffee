@@ -1,5 +1,6 @@
 _ = require 'lodash'
 Plugin = require './plugin'
+CLIFormatter = require './formatters/cli'
 path = require 'path'
 chdir = require 'chdir'
 
@@ -40,9 +41,11 @@ module.exports = class PluginLoader
         else
           params = req.params
 
+        formatter = new CLIFormatter
         options.action(params, shell)(shell.settings.config)
-          .then (data) -> res.println data
-          .fail (err) -> res.red(err).ln()
+          .progress (data) -> formatter.progress res, data
+          .then (data) -> formatter.then res, data
+          .fail (data) -> formatter.fail res, data
           .finally -> res.prompt() if req.shell.isShell
 
     if options.subcommands
